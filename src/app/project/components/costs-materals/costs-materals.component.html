@@ -1,0 +1,75 @@
+
+	<ng-container [formGroup]='form'>
+
+		<p class='section-title col-full'>
+			Затраты: сырье и материалы
+			<!-- <app-input-help>
+				Затраты: сырье и материалы
+			</app-input-help> -->
+		</p>
+		<hr class='col-full' />
+
+		<app-form-field class='col-1-2'>
+			<app-label>Наименование расхода:</app-label>
+			<input
+				app-input
+				formControlName="name"
+				placeholder='Введите наименование' />
+			<!-- <app-error *ngIf="form.controls['name'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+		</app-form-field>
+
+		<app-form-field class='col-1-2'>
+			<app-label>Кол-во материалов на 1 ед. продукции:</app-label>
+			<input
+				app-input
+				formControlName="number_per_product"
+				type="number"
+				placeholder='Введите число' />
+			<!-- <app-error *ngIf="form.controls['number_per_product'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+		</app-form-field>
+
+		<app-form-field class='col-1-2'>
+			<app-label>Цена 1 ед. материалов, руб.:</app-label>
+			<input
+				app-input
+				formControlName="price"
+				type="number"
+				placeholder='Введите число' />
+			<!-- <app-error *ngIf="form.controls['price'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+		</app-form-field>
+
+		<app-checkbox
+			class='col-full'
+			formControlName="calc_inflation">
+			Учитывать инфляцию
+			<!-- <app-input-help [field]="helpers?.['calc_inflation']">
+					Укажите, если выручка облагается налогом на добычу полезных ископаемых
+					(НДПИ)
+				</app-input-help> -->
+		</app-checkbox>
+
+		<ng-container *ngIf="arrayData.length < 5">
+			<button
+				#button
+				app-button
+				app-icon-inherit-button
+				(click)="addToTable()"
+				class='button col-1-2'>
+				<i class='icon-add-new'></i>
+				&nbsp;&nbsp;Добавить объекты
+			</button>
+		</ng-container>
+
+		<ng-container *ngIf="arrayData.length > 0">
+			<app-table
+				[data]="arrayData"
+				[dataHead]="dataHead"
+				[title]="tableTitle"></app-table>
+		</ng-container>
+	</ng-container>

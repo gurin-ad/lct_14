@@ -1,0 +1,61 @@
+:host {
+  display: inline-block;
+  position: relative;
+}
+
+.icon-help {
+  font-size: 1.8rem;
+  color: var(--black);
+
+  &:hover+.wrap {
+    // display: block;
+  }
+}
+
+.wrap-mount {
+  position: absolute;
+  top: 0;
+  left: -0.3em;
+  width: calc(100% + 0.6em);
+  height: calc(100% + 2em);
+
+}
+
+.wrap {
+  width: 32rem;
+  filter: drop-shadow(0px 4px 10px rgba(97, 97, 97, 0.18));
+  // display: none;
+  display: block;
+  position: absolute;
+  top: 2.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 16;
+
+  & .popover-triangle {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    background: var(--white);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: rotate(45deg) translateX(-50%);
+  }
+
+  & .popover {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    background: var(--white);
+    padding: 2.65rem 1.6rem 2.65rem 2rem;
+    border-radius: .8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    button {
+      width: 160px;
+      margin-top: 10px;
+    }
+  }
+}

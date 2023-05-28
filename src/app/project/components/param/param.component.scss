@@ -1,0 +1,26 @@
+:host {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-gap: 1rem;
+}
+
+.label {
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  letter-spacing: .005em;
+  color: var(--grey-icon);
+  align-self: flex-end;
+}
+
+.value {
+  font-size: 2rem;
+  line-height: 2.4rem;
+  font-weight: 500;
+  color: var(--black);
+
+  & span {
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    letter-spacing: .005em;
+  }
+}

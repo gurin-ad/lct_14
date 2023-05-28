@@ -1,0 +1,23 @@
+label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  display: none;
+}
+
+i {
+  font-size: 1.8rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.text {
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish&family=Roboto:wght@300;400;500;700&display=swap');
+@import "styles/reset";
+@import "styles/variables";
+@import "styles/icomoon";
+
+
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--black);
+  background: var(--bg);
+}
+
+hr {
+  height: .1rem;
+  border: 0;
+  border-top: .1rem solid var(--primary-10);
+  margin-bottom: 2em;
+}
+
+router-outlet {
+  display: none;
+}
+
+[data-title]:hover:after {
+  opacity: 1;
+  transition: all .1s ease .5s;
+  visibility: visible;
+}
+
+[data-title]:after {
+  content: attr(data-title);
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  color: var(--white);
+  white-space: nowrap;
+  background: var(--grey-icon);
+  padding: .5rem 1rem;
+  border-radius: .4rem;
+  position: absolute;
+  bottom: -3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  z-index: 9999999;
+  visibility: hidden;
+}
+
+[data-title] {
+  position: relative;
+}
+
+.pseudo-accordion {
+  background: var(--white);
+  padding: 3rem 3rem 5rem;
+  border-radius: .8rem;
+
+  & .title {
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    font-weight: 500;
+    letter-spacing: .005em;
+    color: var(--black);
+    margin-right: auto;
+    margin-bottom: 1em;
+  }
+
+  & .text {
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    color: var(--black);
+
+    &+& {
+      margin-top: .6rem;
+    }
+  }
+
+  & .container {
+    background: var(--bg);
+    padding: 2rem;
+    border-radius: .8rem;
+    margin-top: 3rem;
+  }
+}
+
+.section-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 120%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+

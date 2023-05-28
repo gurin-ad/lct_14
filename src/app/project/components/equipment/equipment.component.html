@@ -1,0 +1,60 @@
+ <p class='section-title col-full'>
+	Оборудование
+	<!-- <app-input-help>
+		Оборудование
+	</app-input-help> -->
+</p>
+<hr class='col-full' />
+
+<ng-container [formGroup]='form'>
+
+	<app-form-field class='col-1'>
+		<app-label>Выберите тип:</app-label>
+		<app-select
+			formControlName="type"
+			[options]='equipments'
+			placeholder='Выберите тип'></app-select>
+	</app-form-field>
+
+	<app-form-field class='col-1-2'>
+		<app-label>Название объекта инвестирования:</app-label>
+		<input
+			app-input
+			formControlName="name"
+			placeholder='Введите название' />
+		<!-- <app-error *ngIf="form.controls['name'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+	</app-form-field>
+
+	<app-form-field class='col-1-2'>
+		<app-label>Сумма капитальных расходов, руб.:</app-label>
+		<input
+			formControlName="price"
+			type="number"
+			app-input
+			placeholder='Введите число' />
+		<!-- <app-error *ngIf="form.controls['price'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+	</app-form-field>
+
+</ng-container>
+
+<ng-container *ngIf="arrayData.length < 5">
+	<button
+		#button
+		app-icon-inherit-button
+		(click)="addToTable()"
+		class='button col-1-2'>
+		<i class='icon-add-new'></i>
+		&nbsp;&nbsp;Добавить объекты
+	</button>
+</ng-container>
+
+<ng-container *ngIf="arrayData.length > 0">
+	<app-table
+		[data]="arrayData"
+		[dataHead]="dataHead"
+		[title]="tableTitle"></app-table>
+</ng-container>

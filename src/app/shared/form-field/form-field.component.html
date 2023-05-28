@@ -1,0 +1,42 @@
+<div *ngIf="labelChildren?.length" class="label">
+  <ng-content select="app-label"></ng-content>
+</div>
+
+<div
+  class="wrapper"
+  (click)="control.onContainerClick && control.onContainerClick($event)"
+>
+  <div *ngIf="prefixChildren?.length" class="prefix">
+    <ng-content select="[appPrefix]"></ng-content>
+  </div>
+  <div class="infix">
+    <ng-content></ng-content>
+  </div>
+  <ng-container
+    *ngIf="
+      control.controlType === 'input' && control.inputType === 'password';
+      else suffix
+    "
+  >
+    <button type="button" class="eye" (click)="switchShowedPassword()">
+      <i [class]="setPasswordIconClass()"></i>
+    </button>
+  </ng-container>
+  <ng-template #suffix>
+    <div *ngIf="suffixChildren?.length" class="suffix">
+      <ng-content select="[appSuffix]"></ng-content>
+    </div>
+  </ng-template>
+</div>
+
+<div *ngIf="!hideError || checkTouched" class="error">
+  <ng-container *ngIf="control.touched && !control.focused || checkTouched">
+    <ng-content select="app-error"></ng-content>
+  </ng-container>
+
+  <div *ngIf="subLabelChildren?.length" class="sub-label">
+    <ng-container >
+      <ng-content select="app-sub-label"></ng-content>
+    </ng-container>
+  </div>
+</div>

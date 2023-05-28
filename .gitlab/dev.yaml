@@ -1,0 +1,40 @@
+build metadoor_contest_front dev:
+  stage: build
+  image: metadoor_contest_front_dev:v1
+  tags:
+    - dev
+  only:
+    - dev
+  script:
+    - docker build -t $CI_JOB_IMAGE -f Dockerfile_dev .
+  after_script:
+    - imgs=$( docker images -f dangling=true -q | wc -l ); if [[ $imgs -gt 0 ]]; then docker rmi $(docker images -f dangling=true -q); fi
+
+deploy metadoor_contest_front dev:
+  stage: deploy
+  image: metadoor_contest_front_dev:v1
+  tags:
+    - dev
+  only:
+    - dev
+  before_script:
+    - docker inspect --type=image $CI_JOB_IMAGE 1>/dev/null 2>/dev/null
+    - if [[ $? -ne 0 ]]; then exit 1; fi
+  script:
+    - docker inspect --type=container $CONTAINER_NAME_DEV 1>/dev/null 2>/dev/null
+    - if [[ $? -ne 0 ]]; then exit 1; fi
+    - docker stop $CONTAINER_NAME_DEV && docker rm $CONTAINER_NAME_DEV
+    - docker run -d --restart always -p 127.0.0.1:4210:80 --mount type=volume,src=metadoor_contest_front_nginx_dev_conf,dst=/etc/nginx --name $CONTAINER_NAME_DEV $CI_JOB_IMAGE
+    - docker inspect --type=container $CONTAINER_NAME_DEV 1>/dev/null 2>/dev/null
+    - if [[ $? -ne 0 ]]; then exit 1; fi
+
+clean dev:
+  stage: clean
+  tags:
+    - dev
+  only:
+    - dev
+  script:
+    - conts=$( docker ps -a | wc -l )
+    - if [[ $conts -gt 0 ]]; then docker container prune -f; fi
+    - imgs=$( docker images -f dangling=true -q | wc -l ); if [[ $imgs -gt 0 ]]; then docker rmi $(docker images -f dangling=true -q); fi

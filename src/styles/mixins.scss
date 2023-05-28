@@ -1,0 +1,26 @@
+@mixin button-text {
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+}
+
+@mixin button-medium-text {
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+}
+
+@mixin small-button-text {
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+}
+
+@mixin label {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  font-weight: 500;
+}
+
+@mixin full {
+  &.full {
+    width: 100%;
+  }
+}

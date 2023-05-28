@@ -1,0 +1,19 @@
+<div class="container">
+
+	<app-costs-materals
+[savedData]="savedData?.materials"
+		(onUpdateProduct)="updateformData($event)"></app-costs-materals>
+
+	<app-costs-salary
+[savedData]="savedData?.salary"
+		(onUpdateProduct)="updateformData($event)"></app-costs-salary>
+
+	<app-costs-rent
+[savedData]="savedData?.rent"
+		(onUpdateProduct)="updateformData($event)"></app-costs-rent>
+
+	<app-fixed-costs
+	[savedData]="savedData?.fixed_costs"
+		(onUpdateProduct)="updateformData($event)"></app-fixed-costs>
+
+</div>

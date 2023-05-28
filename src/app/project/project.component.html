@@ -1,0 +1,32 @@
+
+<div class="pseudo-accordion">
+	<h2 *ngIf="!showCalcValue">Расчетные параметры</h2>
+	<h2 *ngIf="showCalcValue">Итоги расчетов</h2>
+
+	<div class="container" *ngIf="!showCalcValue">
+		<app-passport
+			[savedData]="savedData?.passport"
+			[industries]="industries | async"></app-passport>
+			<button app-control-button class="section-btn" (click)="redirectTo()">Перейти к карте со средней ценой строительства</button>
+		<app-equipment
+			[savedData]="savedData?.equipment"></app-equipment>
+		<app-realty
+			[savedData]="savedData?.realty"></app-realty>
+		<app-sales
+			[savedData]="savedData?.sales"></app-sales>
+		<app-cost
+			[savedData]="savedData?.costs"></app-cost>
+	</div>
+
+	<button
+		app-fill-button
+		*ngIf="!showCalcValue"
+		(click)="submitForm()">Расчитать</button>
+
+	<ng-container *ngIf="showCalcValue">
+		<app-calulation-value
+		[calcValue]="calcValue"
+		></app-calulation-value>
+	</ng-container>
+
+</div>

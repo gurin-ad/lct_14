@@ -1,0 +1,10 @@
+FROM metadoor_front_base_dev:v1 as build
+
+WORKDIR /opt/metadoor-front
+
+COPY . ./
+
+RUN npm i && npm run build
+
+FROM nginx:1.22.0
+COPY --from=build /opt/metadoor-front/dist/metadoor-express /usr/share/nginx/html

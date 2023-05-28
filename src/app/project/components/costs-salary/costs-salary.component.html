@@ -1,0 +1,45 @@
+	<ng-container [formGroup]='form'>
+
+		<p class='section-title col-full'>
+			Затраты: заработная плата
+			<app-input-help>
+				Затраты: заработная плата
+			</app-input-help>
+		</p>
+		<hr class='col-full' />
+
+		<app-form-field class='col-1-2'>
+			<app-label>Кол-во персонала, чел:</app-label>
+			<input
+				app-input
+				formControlName="staff_number"
+				type="number"
+				placeholder='Введите число' />
+			<!-- <app-error *ngIf="form.controls['staff_number'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+		</app-form-field>
+
+		<app-form-field class='col-1-2'>
+			<app-label>Среднемесячная зарплата:</app-label>
+			<input
+				app-input
+				formControlName="average_salary"
+				type="number"
+				placeholder='Введите число' />
+			<!-- <app-error *ngIf="form.controls['average_salary'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+		</app-form-field>
+
+		<app-checkbox
+			class='col-full'
+			formControlName="calc_inflation">
+			Учитывать инфляцию
+			<!-- <app-input-help [field]="helpers?.['calc_inflation']">
+				Укажите, если выручка облагается налогом на добычу полезных ископаемых
+				(НДПИ)
+			</app-input-help> -->
+		</app-checkbox>
+
+	</ng-container>

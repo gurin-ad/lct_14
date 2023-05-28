@@ -1,0 +1,14 @@
+<p class='label'>
+  {{label}}
+</p>
+<p class='value'>
+  <ng-container *ngIf='value === undefined || value === null'>
+    &mdash;
+  </ng-container>
+  <ng-container *ngIf='value !== undefined || value !== null'>
+    {{value}}
+    <span *ngIf='unit'>
+      {{unit}}
+    </span>
+  </ng-container>
+</p>

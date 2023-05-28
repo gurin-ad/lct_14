@@ -1,0 +1,70 @@
+ <div class="container">
+	<p class='section-title col-full'>
+		Затраты предприятия
+	</p>
+	<hr class='col-full' />
+
+	<div class="block">
+		<app-param
+			[label]="'Капитальные затраты'"
+			[value]="calcValue?.capex"></app-param>
+		<app-param
+			[label]="'Затраты на материалы'"
+			[value]="calcValue?.materials"></app-param>
+		<app-param
+			[label]="'Затраты на заработную плату'"
+			[value]="calcValue?.salary_costs"></app-param>
+		<app-param
+			[label]="'Аренда'"
+			[value]="calcValue?.rent_costs"></app-param>
+		<app-param
+			[label]="'Затраты услуги'"
+			[value]="calcValue?.fixed_costs"></app-param>
+		<app-summary
+			[label]="'Итого возможных расходов'"
+			[value]="calcValue?.total_possible_costs"></app-summary>
+	</div>
+</div>
+
+<div class="container">
+	<p class='section-title col-full'>
+		Затраты на заработную плату
+	</p>
+	<hr class='col-full' />
+	<div class="block">
+	<app-param
+		[label]="'Затраты на заработную плату'"
+		[value]="calcValue?.salary_costs"></app-param>
+
+	<div class="block">
+		<app-param
+			[label]="'Страховые взносы на медецину'"
+			[value]="calcValue?.medical_contributions"></app-param>
+	</div>
+
+	<div class="block">
+		<app-param
+			[label]="'Страховые взносы (пенсионые)'"
+			[value]="calcValue?.pension_contributions"></app-param>
+	</div>
+	</div>
+</div>
+
+<div class="container">
+	<p class='section-title col-full'>
+		Результаты
+	</p>
+	<hr class='col-full' />
+	<div class="block">
+		<app-param
+			[label]="'Налоги'"
+			[value]="calcValue?.business_taxes"></app-param>
+		<app-summary
+			[label]="'Выручка'"
+			[value]="calcValue?.revenue"></app-summary>
+	</div>
+	<button app-control-button class="section-btn" (click)="redirectTo()">Полный отчет в формате PDF</button>
+</div>
+
+
+

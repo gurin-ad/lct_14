@@ -1,0 +1,99 @@
+<p class='section-title col-full'>
+	Продажи
+	<!-- <app-input-help>
+		Продажи
+	</app-input-help> -->
+</p>
+<hr class='col-full' />
+
+<ng-container [formGroup]='form'>
+
+	<app-form-field class='col-1-2'>
+		<app-label>Наименование продукта (товара, работы или услуги):</app-label>
+		<input
+			app-input
+			formControlName="name"
+			placeholder='Введите наименование продукта'
+			 />
+		<!-- <app-error *ngIf="form.controls['name'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+	</app-form-field>
+
+	<app-form-field class='col-1'>
+		<app-label>Клиенты: юр. лица / физ. лица:</app-label>
+		<app-select
+			formControlName="clients_type"
+			[options]='clients_type'
+			placeholder='Выберите форму'
+			></app-select>
+	</app-form-field>
+
+	<app-form-field class='col-1-2'>
+		<app-label>Длительность продаж, лет:</app-label>
+		<input
+			app-input
+			formControlName="sales_duration"
+			type="number"
+			placeholder='Введите число'
+			min="0" max="30"
+			/>
+		<!-- <app-error *ngIf="form.controls['sales_duration'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+	</app-form-field>
+
+	<app-form-field class='col-1-2'>
+		<app-label>Объем продаж в месяц:</app-label>
+		<input
+			app-input
+			formControlName="sales_volume"
+			type="number"
+			placeholder='Введите число'
+			 />
+		<!-- <app-error *ngIf="form.controls['sales_volume'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+	</app-form-field>
+
+	<app-form-field class='col-1-2'>
+		<app-label>Годовой темп роста продаж:</app-label>
+		<input
+			app-input
+			formControlName="annual_sales_growth"
+			type="number"
+			placeholder='Введите число'
+			 />
+		<!-- <app-error *ngIf="form.controls['annual_sales_growth'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+	</app-form-field>
+
+	<app-form-field class='col-1-2'>
+		<app-label>Цена, руб.:</app-label>
+		<input
+			app-input
+			formControlName="price"
+			type="number"
+			placeholder='Введите число'
+			 />
+		<!-- <app-error *ngIf="form.controls['price'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+	</app-form-field>
+
+	<app-form-field class='col-1-2'>
+		<app-label>Годовая инфляция:</app-label>
+		<input
+			app-input
+			formControlName="annual_inflation"
+			type="number"
+			placeholder='Введите число'
+			 />
+		<!-- <app-error *ngIf="form.controls['annual_inflation'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+	</app-form-field>
+
+</ng-container>
+

@@ -1,0 +1,74 @@
+ <p class='section-title col-full'>
+	Паспорт проекта
+	<!-- <app-input-help>
+		Паспорт проекта
+	</app-input-help> -->
+</p>
+<hr class='col-full' />
+
+<ng-container [formGroup]='form'>
+	<app-form-field class='col-1-2'>
+		<app-label>Наименование проекта (кратко):</app-label>
+		<input
+			app-input
+			formControlName="project_name"
+			placeholder='Введите наименование продукта' />
+		<!-- <app-error *ngIf="form.controls['project_name'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+	</app-form-field>
+
+	<app-form-field class='col-1-2'>
+		<app-label>Название (имя) инициатора:</app-label>
+		<input
+			app-input
+			formControlName="initiator_name"
+			placeholder='Введите название (имя)' />
+		<!-- <app-error *ngIf="form.controls['initiator_name'].hasError('required')">
+		Поле обязательно
+	</app-error> -->
+	</app-form-field>
+
+	<app-form-field class='col-1'>
+		<app-label>Организационно-правовая форма:</app-label>
+		<app-select
+			formControlName="organizational_form"
+			[options]='organizational'
+			placeholder='Выберите форму'></app-select>
+	</app-form-field>
+
+	<app-form-field class='col-1'>
+		<app-label>Основная отрасль проекта:</app-label>
+		<app-select
+			formControlName="project_industry"
+			[options]='project_industry'
+			placeholder='Выберите отрасль'></app-select>
+	</app-form-field>
+
+	<app-form-field class='col-1'>
+		<app-label>Сегменты отрасли:</app-label>
+		<app-multiselect
+			formControlName="segments"
+			[options]='segments!'
+			(onChange)="select($event)"
+			placeholder='Выберите сегменты'></app-multiselect>
+	</app-form-field>
+
+	<app-form-field class='col-1' [disabled]="taxTypeDisabled">
+		<app-label>Тип налога:</app-label>
+		<app-select
+			formControlName="tax_type"
+			[options]='taxes'
+			[disableActions]="taxTypeDisabled"
+			placeholder='Выберите значение'></app-select>
+	</app-form-field>
+
+	<app-form-field class='col-1'>
+		<app-label>Расположение проекта:</app-label>
+		<app-select
+			formControlName="location"
+			[options]='location'
+			placeholder='Выберите расположение'></app-select>
+	</app-form-field>
+
+</ng-container>

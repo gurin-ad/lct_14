@@ -1,0 +1,8 @@
+<label>
+  <input type='checkbox' [checked]='checked' (click)='toggle()'>
+  <i *ngIf='!checked' class='icon-checkbox'></i>
+  <i *ngIf='checked' class='icon-checkbox-selected'></i>
+  <span class='text'>
+    <ng-content></ng-content>
+  </span>
+</label>

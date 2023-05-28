@@ -1,0 +1,31 @@
+.text {
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  color: var(--black);
+  letter-spacing: .005em;
+  margin-bottom: 2rem;
+}
+
+.block {
+  margin-top: 6rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+button[app-fill-button] {
+  margin: 2em 0 0;
+  width: 100%;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+}
+
+.section-btn {
+  height: fit-content!important;
+  padding: 1.5rem 2rem!important;
+	margin-top: -1rem;
+  width: auto;
+}

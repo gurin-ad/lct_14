@@ -1,0 +1,13 @@
+<div class='wrap' (click)='toggle()'>
+  <span class='value' [class.placeholder]='value === undefined || value === null || !value?.length'>
+    {{renderValue()}}
+  </span>
+  <i class='icon-arrow'></i>
+</div>
+<div *ngIf='focused' class='dropdown' @dropdown>
+  <label *ngFor='let option of options' class='option'>
+    <input type='checkbox' [checked]='checkSelected(option!.name)' (click)='checkboxToggle(option!.name)'>
+    <i [class]='renderCheckbox(option!.name)'></i>
+    <span class='text'>{{option.name}}</span>
+  </label>
+</div>

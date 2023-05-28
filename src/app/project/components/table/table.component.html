@@ -1,0 +1,31 @@
+<h3>{{title}}</h3>
+<table class="col-full">
+	<thead>
+		<tr>
+			<th>показатель</th>
+			<!-- for full table data -->
+			<!-- <th *ngFor="let item  of dataHead | keyvalue">{{item.value}}</th> -->
+
+			<th>{{dataHead['name']}}</th>
+			<th >{{dataHead['price']}}</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let control of filterData; let i = index">
+			<td class="first-cell">Объект {{i+1}}</td>
+			<!-- for full table data -->
+			<!-- <ng-container *ngFor="let item  of dataHead | keyvalue">
+				<td>{{control[item.key] }}</td>
+			</ng-container> -->
+			
+			<td >{{control.name}}</td>
+			<td >{{control?.price}}</td>
+			<td>
+			<!-- <div class="actions" (click)="deleteRow(i)">
+				<button class="btn"><i class="icon-delete"></i></button>
+			</div> -->
+			</td>
+		</tr>
+	</tbody>
+</table>

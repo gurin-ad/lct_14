@@ -1,0 +1,7 @@
+    <div class="wrap" [ngClass]="{'wrap-left-40': marginLeft}">
+      <div *ngFor="let tab of tabs" (click)="selectTab(tab) "
+       class="link" [class.active]="tab.active" [class.disable]="tab.disable" >
+        <a>{{tab.title}}</a>
+      </div>
+    </div>
+    <ng-content></ng-content>

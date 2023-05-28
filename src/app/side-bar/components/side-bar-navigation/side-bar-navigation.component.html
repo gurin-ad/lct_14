@@ -1,0 +1,28 @@
+<!-- <div class="title" @slideUp>Справочный центр Metadoor Invest</div> -->
+<ul class="list">
+  <li
+    class="list-item-categories"
+    @slideUp
+    *ngFor="let category of categories"
+    [ngClass]="{ 'category-open': category?.id === selectedId }"
+    (click)="selectCategorie(category?.id)"
+  >
+    <div class="category" >
+      <div class="name">{{ category?.name }}</div>
+      <div class="action" [class.open]="category?.id === selectedId">
+        <i class="icon-arrow"></i>
+      </div>
+    </div>
+    <div class="topics" *ngIf="category?.id === selectedId" @content>
+      <div
+        class="list-item-theory"
+        *ngFor="let topic of category.topics"
+        (click)="selectTopic(topic.id)"
+      >
+        {{ topic.name }}
+      </div>
+      <app-side-bar-navigation *ngIf="category.categories?.length" [categories]="category.categories"  (onSelectTopic)="selectTopic($event)"></app-side-bar-navigation>
+    </div>
+  </li>
+</ul>
+

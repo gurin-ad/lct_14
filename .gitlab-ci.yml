@@ -1,0 +1,12 @@
+variables:
+    CONTAINER_NAME_DEV: metadoor-contest-front-dev
+    CONTAINER_NAME_PROD: metadoor-contest-front-prod
+
+stages:
+  - build
+  - deploy
+  - clean
+
+include:
+  - local: '/.gitlab/dev.yaml'
+  - local: '/.gitlab/master.yaml'

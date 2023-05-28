@@ -1,0 +1,70 @@
+
+<!--for DEV MOD -->
+<!-- <div class="sidebar-opener" (click)="showSidebar()">
+  Справочник
+</div>
+ -->
+
+
+<div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow | async">
+  <app-side-bar-header (onClose)="close()">
+    <div
+      @content
+      class="title title-pointer"
+      *ngIf="(showTopic$ | async) && (topicID$ | async)"
+      (click)="titleHandler('to-category')">
+      <i class="icon-arrow"></i> Справочный центр
+    </div>
+    <div
+      @content
+      class="title title-pointer"
+      *ngIf="(showCategories$ | async) && (categoryID$ | async)"
+      (click)="titleHandler('to-topic')">
+      <i class="icon-arrow"></i> К статье
+    </div>
+    <div
+      @content
+      class="title"
+      *ngIf="!(topicID$ | async) && !(categoryID$ | async)">
+      Справочник
+    </div>
+  </app-side-bar-header>
+
+  <div class="sidebar-content">
+    <ng-container *ngIf="showCategories$ | async">
+      <div class="title-nav" @slideUp>Справочный центр Metadoor Invest</div>
+      <app-side-bar-navigation
+        [categories]="categories"
+        [selectCategorieId]="categoryID$ | async"
+        (onSelectTopic)="selectTopic($event)">
+      </app-side-bar-navigation>
+    </ng-container>
+
+    <ng-container *ngIf="showTopic$ | async">
+      <div class="topic-title" @slideUp>
+        <h4>
+          {{ titleTopic }}
+        </h4>
+      </div>
+      <div class="content-tabs" @slideUp>
+        <app-tabs [marginLeft]="true">
+          <app-tab tabTitle="Теория">
+            <app-side-bar-content (onRedirect)="selectTopic($event)">
+              <div
+                class="theory"
+                [innerHTML]="sanitizer.bypassSecurityTrustHtml(theory)"></div>
+            </app-side-bar-content>
+          </app-tab>
+          <app-tab tabTitle="Примеры" [disable]="!examples">
+            <app-side-bar-content (onRedirect)="selectTopic($event)">
+              <div
+                class="theory"
+                [innerHTML]="sanitizer.bypassSecurityTrustHtml(examples)"></div>
+            </app-side-bar-content>
+          </app-tab>
+        </app-tabs>
+      </div>
+    </ng-container>
+  </div>
+  <app-metadoor-label></app-metadoor-label>
+</div>

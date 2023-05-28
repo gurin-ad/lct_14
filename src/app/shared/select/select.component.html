@@ -1,0 +1,22 @@
+<!-- <div class='wrap'  (click)='toggle()' [contentEditable]="true" ngDefaultControl name="model" [(ngModel)]="model"  (ngModelChange)="search($event)" >
+  <span class='value' [class.placeholder]='value === undefined || value === null' >{{renderValue()}}</span>
+  <i class='icon-arrow'></i>
+</div> -->
+<div class='wrap' (click)='toggle()'>
+	<input app-input class='value' [placeholder]='placeholder' name="model" [(ngModel)]="model" (ngModelChange)="search($event)" autocomplete="off">
+	<i class='icon-arrow'></i>
+</div>
+<div *ngIf='focused && !disableActions' class='dropdown' @dropdown>
+	<ng-container *ngFor='let option of showData'>
+		<div
+			*ngIf='option?.active === undefined || option?.active === true '
+			class='option'
+			[class.active]='value === option.name'
+			(click)='select(option.name)'>
+			{{option.name}}
+		</div>
+		<div *ngIf='option?.active === false' class='option disabled'>
+			{{option.name}}
+		</div>
+	</ng-container>
+</div>

@@ -1,0 +1,13 @@
+<div class='block'>
+  <div class='header' [class.divider]='divider'>
+    <p class='title'>
+      {{name}}
+    </p>
+    <p *ngIf='desc' class='desc'>
+      {{desc}}
+    </p>
+  </div>
+  <div class='content'>
+    <ng-content></ng-content>
+  </div>
+</div>

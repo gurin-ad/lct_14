@@ -1,0 +1,216 @@
+@import "src/styles/mixins";
+
+@mixin basic-button {
+  height: 4.2rem;
+  @include button-text;
+  padding: 0 2.4rem;
+  border-radius: .8rem;
+
+  @include full;
+
+  & i {
+    margin-right: 1rem;
+  }
+}
+
+@mixin states {
+  &:hover {
+    background: var(--button-hover);
+  }
+
+  &:active {
+    background: var(--primary-30);
+  }
+
+  &:disabled {
+    background: var(--primary-10);
+    cursor: default;
+  }
+}
+
+@mixin small {
+  &.small {
+    height: 3.2rem;
+    @include small-button-text;
+  }
+}
+
+.app-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 300ms ease-out, background-color 300ms ease-out, border-color 300ms ease-out;
+  cursor: pointer;
+
+  &.app-fill-green-button {
+    @include basic-button;
+    color: var(--white);
+    background: var(--green-button);
+    border-width: 0px;
+
+    @include small;
+    @include states;
+
+    &:hover {
+      color: var(--white);
+      background: var(--green-button-hover);
+    }
+
+    &:active {
+      color: var(--white);
+      background: var(--green-button-active);
+    }
+  }
+
+  &.app-basic-button {
+    @include basic-button;
+    color: var(--primary);
+
+    &.small {
+      height: 4rem;
+      @include button-medium-text;
+      color: var(--grey);
+    }
+
+    &:hover {
+      color: var(--primary);
+      background: var(--basic-button-hover);
+    }
+
+    &:active {
+      color: var(--primary);
+      background: var(--primary-10);
+    }
+
+    &:disabled {
+      color: var(--light-grey);
+      background: var(--basic-button-hover);
+    }
+  }
+
+  &.app-fill-button {
+    @include basic-button;
+    color: var(--white);
+    background: var(--primary);
+    border-width: 0px;
+
+    @include small;
+    @include states;
+  }
+
+  &.app-stroked-button {
+    @include basic-button;
+    color: var(--primary);
+    background: var(--white);
+    border: .1rem solid var(--primary);
+
+    @include small;
+    @include states;
+
+    &:hover {
+      color: var(--white);
+      border-color: var(--button-hover);
+    }
+
+    &:active {
+      color: var(--white);
+      border-color: var(--primary-30);
+    }
+
+    &:disabled {
+      color: var(--white);
+      border-color: var(--primary-10);
+    }
+  }
+
+  &.app-red-button {
+    user-select: none;
+    color: var(--red);
+
+    &:hover {
+      color: var(--red-hover);
+    }
+
+    &:active {
+      color: var(--red-active);
+    }
+
+    &:disabled {
+      color: var(--red-disable);
+    }
+  }
+
+  &.app-control-button {
+    @include basic-button;
+    color: var(--primary);
+    background: var(--white);
+    height: 4.6rem;
+    width: 100%;
+    border: .1rem solid var(--primary-10);
+    border-radius: .8rem;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 0 50px var(--white);
+    transition: border-color .2s;
+
+    & i {
+      color: var(--primary);
+    }
+
+    &:hover {
+      border-color: var(--primary-30);
+    }
+
+    &:active {
+      color: var(--primary-70);
+      border-color: var(--primary-70);
+
+      &i {
+        color: var(--primary-70);
+      }
+    }
+
+    &:disabled {
+      color: var(--grey-text);
+      border: .1rem solid #F4F4F4 !important;
+      pointer-events: none;
+    }
+  }
+
+  &.app-icon-button {
+    width: 3rem;
+    height: 3rem;
+    color: var(--white);
+    background: var(--primary);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    @include states;
+  }
+
+  &.app-icon-inherit-button {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    justify-self: left;
+    font-size: 1.4em;
+		font-weight: 500;
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+
+    i {
+      font-size: 2.4rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    // @include states;
+  }
+}

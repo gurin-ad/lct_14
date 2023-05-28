@@ -1,0 +1,12 @@
+<div class="alert-body">
+<i
+  class="icon-ic-alert"
+  [ngClass]="{ orange: alertMessage?.type == 'ALERT', red: alertMessage?.type == 'ERROR'}"
+></i>
+
+<p class="text" [ngClass]="{ 'text-orange': alertMessage?.type == 'ALERT', 'text-red': alertMessage?.type == 'ERROR' }">
+  {{ alertMessage?.text }}
+</p>
+</div>
+
+<i class='icon-cancel' [ngClass]="{ black: alertMessage?.type == 'ALERT', red: alertMessage?.type == 'ERROR'}" (click)='close()'></i>
